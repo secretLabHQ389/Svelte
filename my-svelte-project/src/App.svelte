@@ -1,10 +1,17 @@
+
+
 <script lang="ts">
-	export let name: string;
+	import Nested from './Nested.svelte'
+	export let name;
+	export let unescapedText;
 </script>
 
 <main>
-	<h1>Hello {name}!</h1>
+	<h1>hello {name}!</h1>
 	<p>Visit the <a href="https://svelte.dev/tutorial">Svelte tutorial</a> to learn how to build Svelte apps.</p>
+	<img src={'images/imageExample.png'} alt='{name} used inside alt as variable' />
+	<Nested/>
+	<p>{@html unescapedText}</p>
 </main>
 
 <style>
@@ -17,7 +24,8 @@
 
 	h1 {
 		color: #ff3e00;
-		text-transform: uppercase;
+		/*text-transform: uppercase;*/
+		text-transform: capitalize;
 		font-size: 4em;
 		font-weight: 100;
 	}
