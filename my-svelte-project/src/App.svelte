@@ -29,18 +29,22 @@
 	//foo.bar = 'baz';
 	//follow that up with this or it won't update:
 	//obj = obj
+
+	const objectEx = {
+		name: 'Same prop format as React'
+	}
 </script>
 
 <main>
 	<h1>hello {name}!</h1>
 	<p>Visit the <a href="https://svelte.dev/tutorial">Svelte tutorial</a> to learn how to build Svelte apps.</p>
 	<img src={'images/imageExample.png'} alt='{name} used inside alt as variable' />
-	<Nested/>
 	<p>{@html unescapedText}</p>
 	<button on:click={incrementCounter}>Clicked {count} {count === 1 ? 'time' : 'times'}</button>
 	<p>Doubled count: {doubled}</p>
 	<button on:click={addAnother}>Add another invite:</button>
 	<p>{guestList}</p>
+	<Nested invitees={guestList} sameObj={objectEx.name} />
 </main>
 
 <style>
