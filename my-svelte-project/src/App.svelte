@@ -33,6 +33,58 @@
 	const objectEx = {
 		name: 'Same prop format as React'
 	}
+
+	let auth = {
+		loggedIn: false
+	}
+
+	const toggleStatus = () => {
+		if (auth.loggedIn === false) {
+			auth.loggedIn = true
+		} else {
+			auth.loggedIn = false
+		}
+	}
+
+	const cats = [
+		{
+			name: 'Tom',
+			production: 'Tom & Jerry'
+		}, 
+		{
+			name: 'Sylvester',
+			production: 'WB Cartoons'
+		}, 
+		{
+			name: 'Simba',
+			production: 'The Lion King'
+		}, 
+		{
+			name: 'Mufasa',
+			production: 'The Lion King'
+		}, 
+		{
+			name: 'Tony',
+			production: 'Tony the Tiger cereal'
+		}]
+
+	//when calling a function from an event, assign the function to a variable to call it, then show the output as the varaible in the HTML:
+	// async function getRandomNumber() {
+	// 	const res = await fetch(`tutorial/random-number`);
+	// 	const text = await res.text();
+
+	// 	if (res.ok) {
+	// 		return text;
+	// 	} else {
+	// 		throw new Error(text);
+	// 	}
+	// }
+
+	// let promise = getRandomNumber();
+
+	// function handleClick() {
+	// 	promise = getRandomNumber();
+	// }
 </script>
 
 <main>
@@ -45,6 +97,33 @@
 	<button on:click={addAnother}>Add another invite:</button>
 	<p>{guestList}</p>
 	<Nested invitees={guestList} sameObj={objectEx.name} />
+	<button on:click={toggleStatus}>Log {auth.loggedIn === true ? 'Out' : 'In'}</button>
+	{#if auth.loggedIn === true}
+		<p>User is logged in!</p>
+	{:else}
+	<!-- {: else if 5 === selection} -->
+		<p>User is logged out!</p>
+	{/if}
+
+	{#each cats as {name}, i (name)}
+		<li>
+			{i + 1}: {name}
+		</li>
+	{/each}
+	<!-- same as:
+	{#each cats as cat (cat.name), i} cat.name is the key
+		<li>
+			{i + 1}: {cat.name}
+		</li> 
+	{/each} -->
+
+	<!-- {#await promise}
+		<p>...waiting</p>
+	{:then number}
+		<p>The number is {number}</p>
+	{:catch error}
+		<p style="color: red">{error.message}</p>
+	{/await} -->
 </main>
 
 <style>
