@@ -3,7 +3,14 @@
 <!-- It's recommended to put the fetch in onMount rather than at the top level of the <script> because of server-side rendering (SSR). -->
 
 <script>
-    let photos = [];
+    import { onMount } from 'svelte';
+	
+	let photos = [];
+	
+	onMount(async () => {
+		const res = await fetch(`https://jsonplaceholder.typicode.com/photos?_limit=5`);
+		photos = await res.json();
+	});
 </script>
 
 <h1>Photo album</h1>

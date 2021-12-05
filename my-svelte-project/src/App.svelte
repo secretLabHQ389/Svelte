@@ -13,6 +13,7 @@
 	import BlockLevelBindings from './BlockLevelBindings.svelte';
 	import Keypad from './Keypad.svelte';
 	import OnMountLifeCycle from './OnMountLifeCycle.svelte';
+	import Timer from './Timer.svelte';
 	export let name;
 	export let unescapedText;
 
@@ -126,6 +127,12 @@
 	}
 
 	let field;
+
+	let open = false;
+	let seconds = 0;
+
+	const toggle = () => (open = !open);
+	const handleTick = () => (seconds += 1);
 </script>
 
 <main>
@@ -202,6 +209,19 @@
 		Focus field
 	</button>
 	<OnMountLifeCycle />
+	If behavior keeps adding up, use this to reset and kill memory leak:
+
+	<div>
+		<button on:click={toggle}>{open ? 'Close' : 'Open'} Timer</button>
+		<p>
+			The Timer component has been open for
+			{seconds} {seconds === 1 ? 'second' : 'seconds'}
+		</p>
+		{#if open}
+		<!-- Restart local server for random errors: -->
+		<Timer callback={handleTick} />
+		{/if}
+	</div>
 </main>
 
 <style>
