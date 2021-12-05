@@ -4,6 +4,15 @@
 	import OuterForward from './OuterForward.svelte';
 	import OuterForwardShorthand from './OuterForwardShorthand.svelte';
 	import CustomButton from './CustomButton.svelte';
+	import TextBinding from './TextBinding.svelte';
+	import CheckboxBinding from './CheckboxBinding.svelte';
+	import GroupBinding from './GroupBinding.svelte';
+	import SelectorBinding from './SelectorBinding.svelte';
+	import BindInputToProperty from './BindInputToProperty.svelte';
+	import VideoBindings from './VideoBindings.svelte';
+	import BlockLevelBindings from './BlockLevelBindings.svelte';
+	import Keypad from './Keypad.svelte';
+	import OnMountLifeCycle from './OnMountLifeCycle.svelte';
 	export let name;
 	export let unescapedText;
 
@@ -108,6 +117,15 @@
 	const handleClick = () => {
 		alert('Button Clicked');
 	}
+
+	let pin;
+	$: view = pin ? pin.replace(/\d(?!$)/g, '•') : 'enter your pin';
+
+	function handleSubmitKeypad() {
+		alert(`submitted ${pin}`);
+	}
+
+	let field;
 </script>
 
 <main>
@@ -165,6 +183,25 @@
 	<OuterForwardShorthand on:message={handleForwardedMessage}/>
 	Can also forward an event on an entire component:
 	<CustomButton on:click={handleClick}/>
+	Bind so that input changes also change the variable:
+	<TextBinding />
+	<CheckboxBinding />
+	<GroupBinding />
+	<SelectorBinding />
+	Research examples of usage of: contenteditable="true"]
+	Property binding mutates array, use event handlers to not do that:
+	<BindInputToProperty />
+	<VideoBindings />
+	<BlockLevelBindings />
+	Bind parent props to child props sparingly:
+	<h1 style="color: {pin ? '#333' : '#ccc'}">{view}</h1>
+	<Keypad bind:value={pin} on:submit={handleSubmitKeypad} />
+	Can also bind to component instances and then change that variable from another component:
+	<input bind:this={field} />
+	<button on:click="{() => field.focus()}">
+		Focus field
+	</button>
+	<OnMountLifeCycle />
 </main>
 
 <style>
