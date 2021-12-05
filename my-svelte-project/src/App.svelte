@@ -1,5 +1,9 @@
 <script lang="ts">
 	import Nested from './Nested.svelte'
+	import EventDispatch from './EventDispatch.svelte';
+	import OuterForward from './OuterForward.svelte';
+	import OuterForwardShorthand from './OuterForwardShorthand.svelte';
+	import CustomButton from './CustomButton.svelte';
 	export let name;
 	export let unescapedText;
 
@@ -85,10 +89,32 @@
 	// function handleClick() {
 	// 	promise = getRandomNumber();
 	// }
+	let m = { x: 0, y: 0 };
+
+	let oneClick: number = 0
+
+	const modifierExample = () => {
+		oneClick += 1
+	}
+
+	const handleMessage = event => {
+		alert(event.detail.text);
+	}
+
+	const handleForwardedMessage = event => {
+		alert(event.detail.text);
+	}
+
+	const handleClick = () => {
+		alert('Button Clicked');
+	}
 </script>
 
 <main>
 	<h1>hello {name}!</h1>
+	<div on:mousemove="{e => m = { x: e.clientX, y: e.clientY}}">
+		The mouse position is: {m.x} {m.y}
+	</div>
 	<p>Visit the <a href="https://svelte.dev/tutorial">Svelte tutorial</a> to learn how to build Svelte apps.</p>
 	<img src={'images/imageExample.png'} alt='{name} used inside alt as variable' />
 	<p>{@html unescapedText}</p>
@@ -124,6 +150,21 @@
 	{:catch error}
 		<p style="color: red">{error.message}</p>
 	{/await} -->
+	<button on:click|once={modifierExample}>
+		This button will only run once.
+	</button>
+	<p>Once modifier clicked: {oneClick} times.</p>
+
+	<!-- "event directive"- on: followed by name of event being dispatched -->
+	<EventDispatch on:message={handleMessage}/>
+
+	Must pass along all events in a component tree, 'forwarding'
+	One option (to limit what is dispatched):
+	<OuterForward on:message={handleForwardedMessage}/>
+	Second option (shorthand to dispatch all events):
+	<OuterForwardShorthand on:message={handleForwardedMessage}/>
+	Can also forward an event on an entire component:
+	<CustomButton on:click={handleClick}/>
 </main>
 
 <style>
@@ -140,6 +181,11 @@
 		text-transform: capitalize;
 		font-size: 4em;
 		font-weight: 100;
+	}
+
+	div {
+		width: 100%;
+		height: 100%;
 	}
 
 	@media (min-width: 640px) {
