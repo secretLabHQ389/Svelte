@@ -17,6 +17,7 @@
 	import Timer from './Timer.svelte';
 	import TickToPreventReactiveAction from './TickToPreventReactiveAction.svelte';
 	import StoresExamples from './StoresExamples.svelte';
+	import MotionExamples from './MotionExamples.svelte';
 
 	export let name;
 	export let unescapedText;
@@ -232,6 +233,8 @@
 	<TickToPreventReactiveAction />
 
 	<StoresExamples />
+
+	<MotionExamples />
 </main>
 
 <style>
