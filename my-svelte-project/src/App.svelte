@@ -16,6 +16,8 @@
 	import UpdateScrollExample from './UpdateScrollExample.svelte';
 	import Timer from './Timer.svelte';
 	import TickToPreventReactiveAction from './TickToPreventReactiveAction.svelte';
+	import StoresExamples from './StoresExamples.svelte';
+
 	export let name;
 	export let unescapedText;
 
@@ -228,6 +230,8 @@
 	<UpdateScrollExample />
 	<!-- Tick prevents cursor from jumping to end after TAB by awaiting next microtask, such as a mouse click... -->
 	<TickToPreventReactiveAction />
+
+	<StoresExamples />
 </main>
 
 <style>
