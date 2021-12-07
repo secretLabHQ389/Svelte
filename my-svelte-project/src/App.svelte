@@ -13,7 +13,9 @@
 	import BlockLevelBindings from './BlockLevelBindings.svelte';
 	import Keypad from './Keypad.svelte';
 	import OnMountLifeCycle from './OnMountLifeCycle.svelte';
+	import UpdateScrollExample from './UpdateScrollExample.svelte';
 	import Timer from './Timer.svelte';
+	import TickToPreventReactiveAction from './TickToPreventReactiveAction.svelte';
 	export let name;
 	export let unescapedText;
 
@@ -222,6 +224,10 @@
 		<Timer callback={handleTick} />
 		{/if}
 	</div>
+
+	<UpdateScrollExample />
+	<!-- Tick prevents cursor from jumping to end after TAB by awaiting next microtask, such as a mouse click... -->
+	<TickToPreventReactiveAction />
 </main>
 
 <style>
