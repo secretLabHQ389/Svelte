@@ -21,8 +21,9 @@
 	import StoresExamples from './StoresExamples.svelte';
 	import MotionExamples from './MotionExamples.svelte';
 	import CustomTransition from './CustomTransition.svelte';
-import ActionsExample from './ActionsExample.svelte';
-import ActionParameters from './ActionParameters.svelte';
+	import ActionsExample from './ActionsExample.svelte';
+	import ActionParameters from './ActionParameters.svelte';
+	import ClassesExamples from './ClassesExamples.svelte';
 
 	export let name;
 	export let unescapedText;
@@ -248,6 +249,8 @@ import ActionParameters from './ActionParameters.svelte';
 	<ActionsExample />
 
 	<ActionParameters />
+
+	<ClassesExamples />
 </main>
 
 <style>
