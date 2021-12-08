@@ -32,6 +32,7 @@
 	import ElementSelf from './ElementSelf.svelte';
 	import ElementDynamicComponent from './ElementDynamicComponent.svelte';
 	import ElementFragment from './ElementFragment.svelte';
+	import ModuleContext from './ModuleContext.svelte';
 	// import ElementOptions from './ElementOptions.svelte';
 	// import ElementBody from './ElementBody.svelte';
 	// import ElementWindow from './ElementWindow.svelte';
@@ -279,6 +280,8 @@
 	<!-- <ElementOptions /> -->
 
 	<ElementFragment />
+
+	<ModuleContext />
 
 </main>
 
