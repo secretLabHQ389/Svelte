@@ -161,6 +161,7 @@
 
 <main>
 	<h1>hello {name}!</h1>
+	{@debug name}
 	<div on:mousemove="{e => m = { x: e.clientX, y: e.clientY}}">
 		The mouse position is: {m.x} {m.y}
 	</div>
