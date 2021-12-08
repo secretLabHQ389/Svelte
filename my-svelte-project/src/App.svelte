@@ -1,3 +1,7 @@
+<!-- <svelte:head>
+	<link rel="stylesheet" href="tutorial/dark-theme.css">
+</svelte:head> -->
+
 <script lang="ts">
 	import { fade, fly } from 'svelte/transition';
 	//"prevent jank"-
@@ -25,6 +29,12 @@
 	import ActionParameters from './ActionParameters.svelte';
 	import ClassesExamples from './ClassesExamples.svelte';
 	import Slots from './Slots.svelte';
+	import ElementSelf from './ElementSelf.svelte';
+	import ElementDynamicComponent from './ElementDynamicComponent.svelte';
+	import ElementFragment from './ElementFragment.svelte';
+	// import ElementOptions from './ElementOptions.svelte';
+	// import ElementBody from './ElementBody.svelte';
+	// import ElementWindow from './ElementWindow.svelte';
 	//import ContextExample from './ContextExample.svelte';
 
 	export let name;
@@ -257,6 +267,18 @@
 	<Slots />
 
 	<!-- <ContextExample /> -->
+
+	<ElementSelf />
+
+	<ElementDynamicComponent />
+
+	<!-- <ElementWindow /> -->
+
+	<!-- <ElementBody /> -->
+
+	<!-- <ElementOptions /> -->
+
+	<ElementFragment />
 
 </main>
 
