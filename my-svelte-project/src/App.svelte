@@ -24,6 +24,7 @@
 	import ActionsExample from './ActionsExample.svelte';
 	import ActionParameters from './ActionParameters.svelte';
 	import ClassesExamples from './ClassesExamples.svelte';
+	import Slots from './Slots.svelte';
 
 	export let name;
 	export let unescapedText;
@@ -251,6 +252,9 @@
 	<ActionParameters />
 
 	<ClassesExamples />
+
+	<Slots />
+
 </main>
 
 <style>
