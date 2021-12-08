@@ -1,4 +1,6 @@
 <script lang="ts">
+	import { fade, fly } from 'svelte/transition';
+	//"prevent jank"-
 	import Nested from './Nested.svelte'
 	import EventDispatch from './EventDispatch.svelte';
 	import OuterForward from './OuterForward.svelte';
@@ -18,6 +20,7 @@
 	import TickToPreventReactiveAction from './TickToPreventReactiveAction.svelte';
 	import StoresExamples from './StoresExamples.svelte';
 	import MotionExamples from './MotionExamples.svelte';
+	import CustomTransition from './CustomTransition.svelte';
 
 	export let name;
 	export let unescapedText;
@@ -155,10 +158,10 @@
 	<Nested invitees={guestList} sameObj={objectEx.name} />
 	<button on:click={toggleStatus}>Log {auth.loggedIn === true ? 'Out' : 'In'}</button>
 	{#if auth.loggedIn === true}
-		<p>User is logged in!</p>
+		<p transition:fade>User is logged in!</p>
 	{:else}
 	<!-- {: else if 5 === selection} -->
-		<p>User is logged out!</p>
+		<p in:fly="{{ y: 200, duration: 2000 }}" out:fade>User is logged out!</p>
 	{/if}
 
 	{#each cats as {name}, i (name)}
@@ -235,6 +238,8 @@
 	<StoresExamples />
 
 	<MotionExamples />
+
+	<CustomTransition />
 </main>
 
 <style>
