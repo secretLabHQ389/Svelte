@@ -1,6 +1,7 @@
 <script>
 	import { fade, fly, slide, crossfade } from 'svelte/transition';
 	import { elasticOut, quintOut } from 'svelte/easing';
+	import { flip } from 'svelte/animate';
 
 	let visible = true;
     let status = 'waiting...';
@@ -159,6 +160,7 @@
 			<label
 				in:receive="{{key: todo.id}}"
 				out:send="{{key: todo.id}}"
+				animate:flip="{{duration: 200}}"
 			>
 				<input type=checkbox on:change={() => mark(todo, true)}>
 				{todo.description}
@@ -174,6 +176,7 @@
 				class="done"
 				in:receive="{{key: todo.id}}"
 				out:send="{{key: todo.id}}"
+				animate:flip="{{duration: 200}}"
 			>
 				<input type=checkbox checked on:change={() => mark(todo, false)}>
 				{todo.description}

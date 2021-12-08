@@ -21,6 +21,8 @@
 	import StoresExamples from './StoresExamples.svelte';
 	import MotionExamples from './MotionExamples.svelte';
 	import CustomTransition from './CustomTransition.svelte';
+import ActionsExample from './ActionsExample.svelte';
+import ActionParameters from './ActionParameters.svelte';
 
 	export let name;
 	export let unescapedText;
@@ -240,6 +242,12 @@
 	<MotionExamples />
 
 	<CustomTransition />
+
+	<p>Actions examples below:</p>
+
+	<ActionsExample />
+
+	<ActionParameters />
 </main>
 
 <style>
