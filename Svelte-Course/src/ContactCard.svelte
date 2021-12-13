@@ -6,7 +6,7 @@
   <header>
     <div class="grid-container">
       <div class="thumb height100p marginpoint5rem">
-        <img class="height100p" src={imageProp} alt="Attempt at prop, three happy bears walking near brook." />
+        <img class="height100p" src={imageProp} alt="User avatar or placeholder." />
       </div>
       <div class="user-data marginpoint5rem">
         <h1>{userName}</h1>
