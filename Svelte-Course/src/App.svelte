@@ -10,7 +10,8 @@
 		image = '',
 		done = false,
 		formstate = 'empty',
-		createdContact = {}
+		createdContacts = []
+
 
 	// $: upperCaseName = name.toUpperCase()
 	// $: console.log(name)
@@ -38,12 +39,12 @@
 		}
 		done = true
 		formstate = 'done'
-		createdContact = {
+		createdContacts = [...createdContacts, ({
 			name,
 			job,
 			bio,
 			image
-		}
+		})]
 	}
 </script>
 
@@ -89,13 +90,18 @@ Biography
 
 <button on:click={addContact}>Add Contact Card</button>
 
-{#if done}
-	<ContactCard 
-		userName={createdContact.name} 
-		jobTitle={createdContact.job}
-		description={createdContact.bio}
-		imageProp={createdContact.image}
-		/>
-{:else if formstate === 'invalid'}
+{#if formstate === 'invalid'}
 	<p>Invalid input.</p>
 {/if}
+
+{#each createdContacts as contact, i}
+<h2>#{i+ 1}</h2>
+<ContactCard 
+	userName={contact.name} 
+	jobTitle={contact.job}
+	description={contact.bio}
+	imageProp={contact.image}
+	/>
+{:else}
+	<p>Please submit a contact to our list.</p>
+{/each}
