@@ -6,32 +6,19 @@
 		errorMessage = '',
 		passwords = []
 
-	function addPasswordToList() {
-		console.log(
-			'currentPassword: ', currentPassword
-			+ 'length: ', currentPassword.length)
-		if (
-			currentPassword.length > 5
-			&& currentPassword.length < 11
-		) {
-		errorMessage = ''
-		}
-		if (
-			currentPassword.length < 5
-		) {
+
+	$: if (currentPassword.trim().length < 5 && currentPassword.trim().length !== 0) {
 		errorMessage = 'Too short'
-		}
-		if (
-			currentPassword.length > 10
-		) {
+	} else if (currentPassword.trim().length > 10) {
 		errorMessage = 'Too long'
-		}
-		if (
-			currentPassword.length > 5
-			&& currentPassword.length < 11
-		) {
-		passwords = [...passwords, currentPassword]
-		return
+	} else {
+		errorMessage = ''
+	}
+
+	function addPasswordToList() {
+		if (errorMessage === '') {
+			passwords = [...passwords, currentPassword]
+			return
 		}
 	}
 
@@ -53,7 +40,7 @@
 	<div class="form-control">
 	  <label for="currentPassword">Password</label>
 	  <input 
-	  	  type="text" 
+	  	  type="password"
 		  bind:value={currentPassword} 
 		  id="currentPassword" 
 		  placeholder={'Enter password'}
