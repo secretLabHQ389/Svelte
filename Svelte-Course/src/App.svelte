@@ -46,6 +46,16 @@
 			image
 		})]
 	}
+
+	function deleteFirst() {
+		createdContacts = createdContacts.slice(1)
+
+
+	}
+
+	function deleteLast() {
+		createdContacts = createdContacts.slice(0, -1)
+	}
 </script>
 
 <style>
@@ -89,12 +99,14 @@ Biography
 </div>
 
 <button on:click={addContact}>Add Contact Card</button>
+<button on:click={deleteFirst}>Delete First</button>
+<button on:click={deleteLast}>Delete Last</button>
 
 {#if formstate === 'invalid'}
 	<p>Invalid input.</p>
 {/if}
 
-{#each createdContacts as contact, i}
+{#each createdContacts as contact, i (Math.random())}
 <h2>#{i+ 1}</h2>
 <ContactCard 
 	userName={contact.name} 
